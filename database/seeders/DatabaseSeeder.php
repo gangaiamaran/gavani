@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Site;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,5 +19,7 @@ class DatabaseSeeder extends Seeder
             RoleSeedr::class,
             UserSeedr::class,
         ]);
+
+        Site::factory()->count(20)->create();
     }
 }

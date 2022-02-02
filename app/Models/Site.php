@@ -1,6 +1,6 @@
 <?php
 
-namespace {{ namespace }};
+namespace App\Models;
 
 use App\Models\BaseModel;
 use App\Models\User;
@@ -13,7 +13,7 @@ use Illuminate\Support\Str;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
 
-class {{ class }} extends BaseModel
+class Site extends BaseModel
 {
     use HasFactory;
     use LogsActivity;
@@ -26,7 +26,13 @@ class {{ class }} extends BaseModel
      *
      * @var array
      */
-    protected $fillable = [];
+    protected $fillable = [
+        'url',
+        'friendly_name',
+        'is_domain_valid',
+        'check_ssl',
+        'check_domain',
+    ];
 
     /**
      * The attributes that should be cast to native types.
@@ -35,9 +41,12 @@ class {{ class }} extends BaseModel
      */
     protected $casts = [
         'id' => 'integer',
+        'is_domain_valid' => 'boolean',
+        'check_ssl' => 'boolean',
+        'check_domain' => 'boolean',
     ];
 
-    
+
 
     /*
     |--------------------------------------------------------------------------
@@ -46,7 +55,7 @@ class {{ class }} extends BaseModel
     */
 
     /**
-     * Get the User that Created the {{ class }}
+     * Get the User that Created the Site
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -56,13 +65,13 @@ class {{ class }} extends BaseModel
     }
 
     /**
-     * Get the User that Updated the {{ class }}
+     * Get the User that Updated the Site
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function updatedBy(): BelongsTo
     {
-        return $this->belongsTo(User::class,'updated_by','id');
+        return $this->belongsTo(User::class, 'updated_by', 'id');
     }
 
 
