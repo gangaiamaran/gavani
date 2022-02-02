@@ -11,6 +11,44 @@ use Illuminate\Support\Str;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
 
+/**
+ * App\Models\Site
+ *
+ * @property int $id
+ * @property string $url
+ * @property string|null $friendly_name
+ * @property bool $is_domain_valid
+ * @property bool $check_ssl
+ * @property bool $check_domain
+ * @property int|null $created_by
+ * @property int|null $updated_by
+ * @property string|null $created_at
+ * @property string|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Activitylog\Models\Activity[] $activities
+ * @property-read int|null $activities_count
+ * @property-read \App\Models\User|null $createdBy
+ * @property-read \App\Models\User|null $updatedBy
+ * @method static \Database\Factories\SiteFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|Site newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Site newQuery()
+ * @method static \Illuminate\Database\Query\Builder|Site onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Site query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Site whereCheckDomain($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Site whereCheckSsl($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Site whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Site whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Site whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Site whereFriendlyName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Site whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Site whereIsDomainValid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Site whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Site whereUpdatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Site whereUrl($value)
+ * @method static \Illuminate\Database\Query\Builder|Site withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|Site withoutTrashed()
+ * @mixin \Eloquent
+ */
 class Site extends BaseModel
 {
     use HasFactory;
