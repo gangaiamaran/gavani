@@ -7,6 +7,16 @@ use Illuminate\Support\Facades\Schema;
 class CreateSitesTable extends Migration
 {
     /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('sites');
+    }
+
+    /**
      * Run the migrations.
      *
      * @return void
@@ -27,15 +37,5 @@ class CreateSitesTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('sites');
     }
 }

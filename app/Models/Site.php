@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\BaseModel;
-use App\Models\User;
 use App\Models\Traits\TimeStamp;
 use App\Models\Traits\UserStamp;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -22,6 +20,18 @@ class Site extends BaseModel
     use UserStamp;
 
     /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'id' => 'integer',
+        'is_domain_valid' => 'boolean',
+        'check_ssl' => 'boolean',
+        'check_domain' => 'boolean',
+    ];
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -32,18 +42,6 @@ class Site extends BaseModel
         'is_domain_valid',
         'check_ssl',
         'check_domain',
-    ];
-
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'id' => 'integer',
-        'is_domain_valid' => 'boolean',
-        'check_ssl' => 'boolean',
-        'check_domain' => 'boolean',
     ];
 
 
@@ -62,16 +60,6 @@ class Site extends BaseModel
     public function createdBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by', 'id');
-    }
-
-    /**
-     * Get the User that Updated the Site
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function updatedBy(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'updated_by', 'id');
     }
 
 
@@ -99,5 +87,15 @@ class Site extends BaseModel
                     ->append($eventName)
                     ->__toString();
             });
+    }
+
+    /**
+     * Get the User that Updated the Site
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function updatedBy(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'updated_by', 'id');
     }
 }

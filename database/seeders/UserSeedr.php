@@ -41,6 +41,6 @@ class UserSeedr extends Seeder
             ],
         ];
 
-        collect($usersList)->each(fn($eachUser) => tap(User::query()->create(Arr::except($eachUser, ['roles'])))->syncRoles(Role::query()->whereIn('name', $eachUser['roles'])->get()));
+        collect($usersList)->each(fn ($eachUser) => tap(User::query()->create(Arr::except($eachUser, ['roles'])))->syncRoles(Role::query()->whereIn('name', $eachUser['roles'])->get()));
     }
 }

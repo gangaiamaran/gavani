@@ -23,6 +23,12 @@ class PermissionSeedr extends Seeder
         'PERMISSION.CREATE',
         'PERMISSION.UPDATE',
         'PERMISSION.DELETE',
+
+        'SITE.VIEW',
+        'SITE.CREATE',
+        'SITE.UPDATE',
+        'SITE.DELETE',
+        'SITE.EXPORT',
     ];
 
     /**

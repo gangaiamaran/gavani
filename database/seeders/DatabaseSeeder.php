@@ -20,6 +20,6 @@ class DatabaseSeeder extends Seeder
             UserSeedr::class,
         ]);
 
-        Site::factory()->count(20)->create();
+        // Site::factory()->count(20)->create();
     }
 }
