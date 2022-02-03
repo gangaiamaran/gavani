@@ -46,13 +46,6 @@ class ListSites extends ListRecords
                     ->sortable()
                     ->searchable(),
 
-                BooleanColumn::make('is_domain_valid')
-                    ->label('Domain valid ?')
-                    ->trueIcon('heroicon-o-check-circle')
-                    ->falseIcon('heroicon-o-x-circle')
-                    ->getStateUsing(function ($record) {
-                        return $record->is_domain_valid ? true : false;
-                    }),
                 BooleanColumn::make('check_ssl')
                 ->label('SSl Check ?')
                     ->trueIcon('heroicon-o-check-circle')
