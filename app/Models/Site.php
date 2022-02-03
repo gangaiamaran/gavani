@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Traits\TimeStamp;
 use App\Models\Traits\UserStamp;
+use App\Observers\SiteObserver;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -83,6 +84,15 @@ class Site extends BaseModel
     ];
 
 
+    /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        static::observe(SiteObserver::class);
+    }
 
     /*
     |--------------------------------------------------------------------------

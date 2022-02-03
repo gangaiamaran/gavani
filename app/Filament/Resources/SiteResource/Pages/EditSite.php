@@ -7,6 +7,8 @@ use App\Filament\Traits\Resources\Pages\Edit\EditPageGetActionsTrait;
 use App\Filament\Traits\Resources\Pages\Edit\EditPageGetBreadcrumbTrait;
 use App\Filament\Traits\Resources\Pages\Edit\EditPageGetFormActionsTrait;
 use App\Filament\Traits\Resources\Pages\Edit\EditPageGetRedirectUrlTrait;
+use App\Rules\Site\DomainMustBeValid;
+use App\Rules\Site\DomainMustNotStartWithProtocolRule;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\TextInput;
@@ -36,12 +38,14 @@ class EditSite extends EditRecord
                                 return $record;
                             })
                             ->rules([
-                                //@TODO Add validation for domain
+                                new DomainMustNotStartWithProtocolRule,
+                                new DomainMustBeValid,
                             ])
-                            ->validationAttribute('Domain'),
+                            ->validationAttribute('Domain Name'),
 
                         TextInput::make('friendly_name')
                         ->maxLength(300)
+                            ->required()
                             ->unique(static::getModel(), 'url', function ($record) {
                                 return $record;
                             }),

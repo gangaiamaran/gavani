@@ -7,6 +7,7 @@ use App\Filament\Traits\Resources\Pages\Create\CreatePageGetActionsTrait;
 use App\Filament\Traits\Resources\Pages\Create\CreatePageGetBreadcrumbTrait;
 use App\Filament\Traits\Resources\Pages\Create\CreatePageGetFormActionsTrait;
 use App\Filament\Traits\Resources\Pages\Create\CreatePageGetRedirectUrlTrait;
+use App\Rules\Site\DomainMustBeValid;
 use App\Rules\Site\DomainMustBeValidRule;
 use App\Rules\Site\DomainMustNotStartWithProtocolRule;
 use Filament\Forms\Components\Card;
@@ -39,12 +40,13 @@ class CreateSite extends CreateRecord
                             })
                             ->rules([
                                 new DomainMustNotStartWithProtocolRule,
-                                'active_url'
+                                new DomainMustBeValid,
                             ])
                             ->validationAttribute('Domain Name'),
 
                         TextInput::make('friendly_name')
                             ->maxLength(300)
+                            ->required()
                             ->unique(static::getModel(), 'url', function ($record) {
                                 return $record;
                             }),
