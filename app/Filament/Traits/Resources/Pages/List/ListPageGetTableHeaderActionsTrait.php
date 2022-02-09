@@ -26,7 +26,7 @@ trait ListPageGetTableHeaderActionsTrait
     public function getTableHeaderActions(): array
     {
         return [
-            
+
 
             TableButtonAction::make('list_page_table_header_export_button')
                 ->label('Export')

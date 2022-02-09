@@ -12,6 +12,7 @@ trait ListPageGetActionsTrait
     public function getActions(): array
     {
         return [];
+
         return [
             PagesButtonAction::make('list_page_add_button')
                 ->label('Add')

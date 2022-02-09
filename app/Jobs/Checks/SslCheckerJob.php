@@ -3,18 +3,20 @@
 namespace App\Jobs\Checks;
 
 use App\Models\Scans\SslCertificateScan;
-use App\Models\Site;
+use App\Models\Monitoring\Site;
 use Illuminate\Bus\Queueable;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\InteractsWithQueue;
-use Spatie\SslCertificate\SslCertificate;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+use Spatie\SslCertificate\SslCertificate;
 
 class SslCheckerJob implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable;
+    use InteractsWithQueue;
+    use Queueable;
+    use SerializesModels;
 
     public Site $site;
 

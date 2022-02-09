@@ -1,12 +1,9 @@
 <?php
 
-namespace App\Filament\Resources\SiteResource\Pages;
+namespace App\Filament\Resources\Monitoring\SiteResource\Pages;
 
-use App\Filament\Resources\SiteResource;
-use App\Filament\Traits\Resources\Pages\Edit\EditPageGetActionsTrait;
-use App\Filament\Traits\Resources\Pages\Edit\EditPageGetBreadcrumbTrait;
-use App\Filament\Traits\Resources\Pages\Edit\EditPageGetFormActionsTrait;
-use App\Filament\Traits\Resources\Pages\Edit\EditPageGetRedirectUrlTrait;
+use App\Filament\Base\Classes\Resources\Pages\BaseEditRecord;
+use App\Filament\Resources\Monitoring\SiteResource;
 use App\Rules\Site\DomainMustBeValid;
 use App\Rules\Site\DomainMustNotStartWithProtocolRule;
 use Filament\Forms\Components\Card;
@@ -14,15 +11,9 @@ use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Resources\Form;
-use Filament\Resources\Pages\EditRecord;
 
-class EditSite extends EditRecord
+class EditSite extends BaseEditRecord
 {
-    use EditPageGetActionsTrait;
-    use EditPageGetBreadcrumbTrait;
-    use EditPageGetFormActionsTrait;
-    use EditPageGetRedirectUrlTrait;
-
     public function form(Form $form): Form
     {
         return $form
@@ -38,8 +29,8 @@ class EditSite extends EditRecord
                                 return $record;
                             })
                             ->rules([
-                                new DomainMustNotStartWithProtocolRule,
-                                new DomainMustBeValid,
+                                new DomainMustNotStartWithProtocolRule(),
+                                new DomainMustBeValid(),
                             ])
                             ->validationAttribute('Domain Name'),
 

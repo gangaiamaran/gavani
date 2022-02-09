@@ -13,9 +13,9 @@
 */
 
 use App\Jobs\Checks\SslCheckerJob;
-use App\Models\Site;
+use App\Models\Monitoring\Site;
 use Illuminate\Support\Facades\Route;
 
-Route::get('test',function(){
+Route::get('test', function () {
     SslCheckerJob::dispatch(Site::query()->find(1));
 });

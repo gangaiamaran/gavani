@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Monitoring;
 
+use App\Models\BaseModel;
 use App\Models\Traits\TimeStamp;
 use App\Models\Traits\UserStamp;
 use App\Observers\SiteObserver;
@@ -13,7 +14,7 @@ use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
- * App\Models\Site
+ * App\Models\Monitoring\Site
  *
  * @property int $id
  * @property string $url
@@ -83,17 +84,6 @@ class Site extends BaseModel
         'check_domain',
     ];
 
-
-    /**
-     * The "booted" method of the model.
-     *
-     * @return void
-     */
-    protected static function booted()
-    {
-        static::observe(SiteObserver::class);
-    }
-
     /*
     |--------------------------------------------------------------------------
     | RELATIONS
@@ -145,5 +135,15 @@ class Site extends BaseModel
     public function updatedBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'updated_by', 'id');
+    }
+
+    /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        static::observe(SiteObserver::class);
     }
 }

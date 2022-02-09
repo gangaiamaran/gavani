@@ -1,19 +1,16 @@
 <?php
 
-namespace App\Filament\Resources\SiteResource\Pages;
+namespace App\Filament\Resources\Monitoring\SiteResource\Pages;
 
-use App\Filament\Resources\SiteResource;
-use App\Filament\Traits\Resources\Pages\View\ViewPageGetActionsTrait;
-use App\Models\Site;
+use App\Filament\Base\Classes\Resources\Pages\BaseViewRecord;
+use App\Filament\Resources\Monitoring\SiteResource;
+use App\Models\Monitoring\Site;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Placeholder;
 use Filament\Resources\Form;
-use Filament\Resources\Pages\ViewRecord;
 
-class ViewSite extends ViewRecord
+class ViewSite extends BaseViewRecord
 {
-    use ViewPageGetActionsTrait;
-
     public function form(Form $form): Form
     {
         return $form

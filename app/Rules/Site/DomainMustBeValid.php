@@ -7,6 +7,16 @@ use Illuminate\Contracts\Validation\Rule;
 class DomainMustBeValid implements Rule
 {
     /**
+     * Get the validation error message.
+     *
+     * @return string
+     */
+    public function message()
+    {
+        return ':attribute is not valid';
+    }
+
+    /**
      * Determine if the validation rule passes.
      *
      * @param  string  $attribute
@@ -16,15 +26,5 @@ class DomainMustBeValid implements Rule
     public function passes($attribute, $value)
     {
         return checkdnsrr($value, 'A');
-    }
-
-    /**
-     * Get the validation error message.
-     *
-     * @return string
-     */
-    public function message()
-    {
-        return ':attribute is not valid';
     }
 }

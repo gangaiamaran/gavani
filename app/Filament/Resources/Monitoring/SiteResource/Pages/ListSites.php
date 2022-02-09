@@ -1,17 +1,9 @@
 <?php
 
-namespace App\Filament\Resources\SiteResource\Pages;
+namespace App\Filament\Resources\Monitoring\SiteResource\Pages;
 
 use App\Filament\Base\Classes\Resources\Pages\BaseListRecords;
-use App\Filament\Resources\SiteResource;
-use App\Filament\Traits\Resources\Pages\List\ListPageGetActionsTrait;
-use App\Filament\Traits\Resources\Pages\List\ListPageGetTableActionsTrait;
-use App\Filament\Traits\Resources\Pages\List\ListPageGetTableHeaderActionsTrait;
-use App\Filament\Traits\Resources\Pages\List\ListPageGetTableQueryStringIdentifierTrait;
-use App\Filament\Traits\Resources\Pages\List\ListPageGetTableRecordsPerPageSelectOptionsTrait;
-use App\Filament\Traits\Resources\Pages\List\ListPageGetTableRecordUrlUsingTrait;
-use App\Filament\Traits\Resources\Pages\List\ListPageGetTitleTrait;
-use Filament\Resources\Pages\ListRecords;
+use App\Filament\Resources\Monitoring\SiteResource;
 use Filament\Resources\Table;
 use Filament\Tables\Columns\BooleanColumn;
 use Filament\Tables\Columns\TextColumn;
@@ -55,11 +47,6 @@ class ListSites extends BaseListRecords
                     }),
 
             ]);
-    }
-
-    protected function getTableBulkActions(): array
-    {
-        return [];
     }
 
     protected function getTableQuery(): Builder

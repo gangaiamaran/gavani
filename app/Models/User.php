@@ -50,8 +50,8 @@ class User extends Authenticatable implements FilamentUser
 {
     use HasApiTokens;
     use HasFactory;
-    use Notifiable;
     use HasRoles;
+    use Notifiable;
 
     /**
      * The attributes that should be cast.

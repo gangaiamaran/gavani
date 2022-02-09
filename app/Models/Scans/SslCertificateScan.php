@@ -2,10 +2,9 @@
 
 namespace App\Models\Scans;
 
-use App\Models\BaseModel;
-use App\Models\User;
 use App\Models\Traits\TimeStamp;
 use App\Models\Traits\UserStamp;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -23,6 +22,15 @@ class SslCertificateScan extends Model
     use UserStamp;
 
     /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'id' => 'integer',
+    ];
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -36,15 +44,6 @@ class SslCertificateScan extends Model
         'valid_till',
         'is_ssl_certificate_valid',
         'is_ssl_certificate_expired',
-    ];
-
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'id' => 'integer',
     ];
 
 
@@ -63,16 +62,6 @@ class SslCertificateScan extends Model
     public function createdBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by', 'id');
-    }
-
-    /**
-     * Get the User that Updated the SslCertificateScan
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function updatedBy(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'updated_by', 'id');
     }
 
 
@@ -100,5 +89,15 @@ class SslCertificateScan extends Model
                     ->append($eventName)
                     ->__toString();
             });
+    }
+
+    /**
+     * Get the User that Updated the SslCertificateScan
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function updatedBy(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'updated_by', 'id');
     }
 }

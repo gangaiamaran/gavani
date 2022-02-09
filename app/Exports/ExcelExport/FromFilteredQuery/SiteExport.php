@@ -6,7 +6,7 @@ use App\Exports\ExcelExport\FromFilteredQuery\Traits\SetFileNameTrait;
 use App\Exports\ExcelExport\FromFilteredQuery\Traits\SetPropertyTrait;
 use App\Exports\ExcelExport\FromFilteredQuery\Traits\SetQueryBuilder;
 use App\Exports\ExcelExport\FromFilteredQuery\Traits\SetWriterType;
-use App\Models\Site;
+use App\Models\Monitoring\Site;
 use Illuminate\Contracts\Support\Responsable;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromQuery;

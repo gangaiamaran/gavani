@@ -14,6 +14,19 @@ trait RelationManagersGetTableHeaderActionsTrait
 {
     use ListPageGetTableHeaderActionsTrait;
 
+    public static function excelExportClass()
+    {
+        return Str::of(static::getResource()::getModel())
+            ->replace(['App\Models\\'], ['App\Exports\ExcelExport\FromFilteredQuery\\'])
+            ->append('Export')
+            ->__toString();
+    }
+
+    public function exportToExcel()
+    {
+        return app(self::excelExportClass())->setQueryBuilder($this->getFilteredTableQuery());
+    }
+
     protected function getTableHeaderActions(): array
     {
         return [
@@ -25,7 +38,7 @@ trait RelationManagersGetTableHeaderActionsTrait
                 ->color('secondary')
                 ->action('exportToExcel')
                 ->visible(static::getResource()::canExport()),
-            
+
             TableButtonAction::make('Add')
                 ->label('Add')
                 ->icon('heroicon-o-plus-circle')
@@ -49,18 +62,5 @@ trait RelationManagersGetTableHeaderActionsTrait
                 ->modalHeading('Create ' . static::getRecordLabel())
                 ->action(fn () => $this->create()),
         ];
-    }
-
-    public static function excelExportClass()
-    {
-        return Str::of(static::getResource()::getModel())
-            ->replace(['App\Models\\'], ['App\Exports\ExcelExport\FromFilteredQuery\\'])
-            ->append('Export')
-            ->__toString();
-    }
-
-    public function exportToExcel()
-    {
-        return app(self::excelExportClass())->setQueryBuilder($this->getFilteredTableQuery());
     }
 }

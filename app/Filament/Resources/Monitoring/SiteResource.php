@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\Resources\Monitoring;
 
-use App\Filament\Resources\SiteResource\Pages\CreateSite;
-use App\Filament\Resources\SiteResource\Pages\EditSite;
-use App\Filament\Resources\SiteResource\Pages\ListSites;
-use App\Filament\Resources\SiteResource\Pages\ViewSite;
+use App\Filament\Resources\Monitoring\SiteResource\Pages\CreateSite;
+use App\Filament\Resources\Monitoring\SiteResource\Pages\EditSite;
+use App\Filament\Resources\Monitoring\SiteResource\Pages\ListSites;
+use App\Filament\Resources\Monitoring\SiteResource\Pages\ViewSite;
 use App\Filament\Traits\Resources\ResourcesGetGlobalSearchResultUrlTrait;
 use App\Filament\Traits\Resources\ResourcesGetSlugTrait;
-use App\Models\Site;
+use App\Models\Monitoring\Site;
 use Filament\Resources\Resource;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;

@@ -7,6 +7,16 @@ use Illuminate\Support\Facades\Schema;
 class CreateSslCertificateScansTable extends Migration
 {
     /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('ssl_certificate_scans');
+    }
+
+    /**
      * Run the migrations.
      *
      * @return void
@@ -31,15 +41,5 @@ class CreateSslCertificateScansTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('ssl_certificate_scans');
     }
 }

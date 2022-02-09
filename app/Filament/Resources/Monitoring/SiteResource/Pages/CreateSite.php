@@ -1,29 +1,19 @@
 <?php
 
-namespace App\Filament\Resources\SiteResource\Pages;
+namespace App\Filament\Resources\Monitoring\SiteResource\Pages;
 
-use App\Filament\Resources\SiteResource;
-use App\Filament\Traits\Resources\Pages\Create\CreatePageGetActionsTrait;
-use App\Filament\Traits\Resources\Pages\Create\CreatePageGetBreadcrumbTrait;
-use App\Filament\Traits\Resources\Pages\Create\CreatePageGetFormActionsTrait;
-use App\Filament\Traits\Resources\Pages\Create\CreatePageGetRedirectUrlTrait;
+use App\Filament\Base\Classes\Resources\Pages\BaseCreateRecord;
+use App\Filament\Resources\Monitoring\SiteResource;
 use App\Rules\Site\DomainMustBeValid;
-use App\Rules\Site\DomainMustBeValidRule;
 use App\Rules\Site\DomainMustNotStartWithProtocolRule;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Resources\Form;
-use Filament\Resources\Pages\CreateRecord;
 
-class CreateSite extends CreateRecord
+class CreateSite extends BaseCreateRecord
 {
-    use CreatePageGetActionsTrait;
-    use CreatePageGetBreadcrumbTrait;
-    use CreatePageGetFormActionsTrait;
-    use CreatePageGetRedirectUrlTrait;
-
     public function form(Form $form): Form
     {
         return $form
@@ -39,8 +29,8 @@ class CreateSite extends CreateRecord
                                 return $record;
                             })
                             ->rules([
-                                new DomainMustNotStartWithProtocolRule,
-                                new DomainMustBeValid,
+                                new DomainMustNotStartWithProtocolRule(),
+                                new DomainMustBeValid(),
                             ])
                             ->validationAttribute('Domain Name'),
 
