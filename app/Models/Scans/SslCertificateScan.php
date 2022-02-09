@@ -13,6 +13,50 @@ use Illuminate\Support\Str;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
 
+/**
+ * App\Models\Scans\SslCertificateScan
+ *
+ * @property int $id
+ * @property int $site_id
+ * @property string|null $issued_by
+ * @property string|null $domain_name
+ * @property string|null $additional_domains
+ * @property string|null $valid_from
+ * @property string|null $valid_till
+ * @property int|null $is_ssl_certificate_valid
+ * @property int|null $is_ssl_certificate_expired
+ * @property int|null $created_by
+ * @property int|null $updated_by
+ * @property string|null $created_at
+ * @property string|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Activitylog\Models\Activity[] $activities
+ * @property-read int|null $activities_count
+ * @property-read User|null $createdBy
+ * @property-read User|null $updatedBy
+ * @method static \Database\Factories\Scans\SslCertificateScanFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|SslCertificateScan newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|SslCertificateScan newQuery()
+ * @method static \Illuminate\Database\Query\Builder|SslCertificateScan onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|SslCertificateScan query()
+ * @method static \Illuminate\Database\Eloquent\Builder|SslCertificateScan whereAdditionalDomains($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SslCertificateScan whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SslCertificateScan whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SslCertificateScan whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SslCertificateScan whereDomainName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SslCertificateScan whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SslCertificateScan whereIsSslCertificateExpired($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SslCertificateScan whereIsSslCertificateValid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SslCertificateScan whereIssuedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SslCertificateScan whereSiteId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SslCertificateScan whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SslCertificateScan whereUpdatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SslCertificateScan whereValidFrom($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SslCertificateScan whereValidTill($value)
+ * @method static \Illuminate\Database\Query\Builder|SslCertificateScan withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|SslCertificateScan withoutTrashed()
+ * @mixin \Eloquent
+ */
 class SslCertificateScan extends Model
 {
     use HasFactory;

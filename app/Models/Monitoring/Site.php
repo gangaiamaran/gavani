@@ -5,6 +5,7 @@ namespace App\Models\Monitoring;
 use App\Models\BaseModel;
 use App\Models\Traits\TimeStamp;
 use App\Models\Traits\UserStamp;
+use App\Models\User;
 use App\Observers\SiteObserver;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
