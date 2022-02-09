@@ -72,6 +72,11 @@ class SslCertificateScan extends Model
      */
     protected $casts = [
         'id' => 'integer',
+        'additional_domains' => 'array',
+        'valid_from' => 'datetime',
+        'valid_till' => 'datetime',
+        'is_ssl_certificate_valid' => 'boolean',
+        'is_ssl_certificate_expired' => 'boolean',
     ];
 
     /**

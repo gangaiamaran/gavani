@@ -24,33 +24,36 @@ class ListSites extends BaseListRecords
                 TextColumn::make('url')
                     ->label('Url')
                     ->sortable()
-                    ->searchable(),
+                    ->searchable()
+                    ->default('N/A'),
 
                 TextColumn::make('friendly_name')
                     ->label('Name')
                     ->sortable()
-                    ->searchable(),
+                    ->searchable()
+                ->default('N/A'),
 
-                BooleanColumn::make('check_ssl')
-                ->label('SSl Check ?')
-                    ->trueIcon('heroicon-o-check-circle')
-                    ->falseIcon('heroicon-o-x-circle')
-                    ->getStateUsing(function ($record) {
-                        return $record->check_ssl ? true : false;
-                    }),
-                BooleanColumn::make('check_domain')
-                ->label('Domain Check ?')
-                    ->trueIcon('heroicon-o-check-circle')
-                    ->falseIcon('heroicon-o-x-circle')
-                    ->getStateUsing(function ($record) {
-                        return $record->check_domain ? true : false;
-                    }),
+            BooleanColumn::make('latestSslCertificateScan.is_ssl_certificate_valid')
+            ->label('SSl')
+            ->trueIcon('heroicon-o-check-circle')
+            ->falseIcon('heroicon-o-x-circle')
+            ->getStateUsing(function ($record) {
+                return $record?->latestSslCertificateScan?->is_ssl_certificate_valid ? true : false;
+            }),
+
+            TextColumn::make('latestSslCertificateScan.valid_till')
+                ->label('SSL Expiry')
+                ->dateTime()
+                ->sortable(),            
 
             ]);
     }
 
     protected function getTableQuery(): Builder
     {
-        return static::getModel()::query();
+        return static::getModel()::query()
+            ->with([
+            'latestSslCertificateScan'
+            ]);
     }
 }

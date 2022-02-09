@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Monitoring;
 
+use App\Filament\Base\Classes\Resources\BaseResource;
 use App\Filament\Resources\Monitoring\SiteResource\Pages\CreateSite;
 use App\Filament\Resources\Monitoring\SiteResource\Pages\EditSite;
 use App\Filament\Resources\Monitoring\SiteResource\Pages\ListSites;
@@ -14,11 +15,8 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
-class SiteResource extends Resource
+class SiteResource extends BaseResource
 {
-    use ResourcesGetGlobalSearchResultUrlTrait;
-    use ResourcesGetSlugTrait;
-
     public static function canCreate(): bool
     {
         return Auth::user()->can('SITE.CREATE');

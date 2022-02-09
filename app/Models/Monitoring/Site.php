@@ -3,12 +3,15 @@
 namespace App\Models\Monitoring;
 
 use App\Models\BaseModel;
+use App\Models\Scans\SslCertificateScan;
 use App\Models\Traits\TimeStamp;
 use App\Models\Traits\UserStamp;
 use App\Models\User;
 use App\Observers\SiteObserver;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 use Spatie\Activitylog\LogOptions;
@@ -136,6 +139,26 @@ class Site extends BaseModel
     public function updatedBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'updated_by', 'id');
+    }
+
+    /**
+     * Get all of the SslCertificateScans for the Site
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function sslCertificateScans(): HasMany
+    {
+        return $this->hasMany(SslCertificateScan::class, 'site_id', 'id');
+    }
+
+    /**
+     * Get the Site's most recent SslCertificateScan
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function latestSslCertificateScan(): HasOne
+    {
+        return $this->hasOne(SslCertificateScan::class, 'site_id', 'id')->latestOfMany();
     }
 
     /**

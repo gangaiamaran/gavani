@@ -11,11 +11,3 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-use App\Jobs\Checks\SslCheckerJob;
-use App\Models\Monitoring\Site;
-use Illuminate\Support\Facades\Route;
-
-Route::get('test', function () {
-    SslCheckerJob::dispatch(Site::query()->find(1));
-});
