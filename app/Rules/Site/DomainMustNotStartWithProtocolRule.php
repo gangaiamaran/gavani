@@ -29,7 +29,7 @@ class DomainMustNotStartWithProtocolRule implements Rule
         return ! Str::of($value)
                 ->startsWith([
                     'http',
-                    'http',
+                    'https',
                 ]);
     }
 }
