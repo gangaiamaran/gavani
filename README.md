@@ -1,5 +1,5 @@
 > ### This Application is in very active development.
-# Laravel project for monitoring SSL/Domain expiry
+# Laravel Application for monitoring SSL/Domain expiry
 
 * [ ] SSL Monitor
 * [ ] Domain Monitor
