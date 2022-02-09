@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exports\ExcelExport\Traits;
+namespace App\Exports\ExcelExport\FromFilteredQuery\Traits;
 
 use Maatwebsite\Excel\Excel;
 

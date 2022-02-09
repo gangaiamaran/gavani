@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Exports\ExcelExport;
+namespace App\Exports\ExcelExport\FromFilteredQuery;
 
-use App\Exports\ExcelExport\Traits\SetFileNameTrait;
-use App\Exports\ExcelExport\Traits\SetPropertyTrait;
-use App\Exports\ExcelExport\Traits\SetQueryBuilder;
-use App\Exports\ExcelExport\Traits\SetWriterType;
+use App\Exports\ExcelExport\FromFilteredQuery\Traits\SetFileNameTrait;
+use App\Exports\ExcelExport\FromFilteredQuery\Traits\SetPropertyTrait;
+use App\Exports\ExcelExport\FromFilteredQuery\Traits\SetQueryBuilder;
+use App\Exports\ExcelExport\FromFilteredQuery\Traits\SetWriterType;
 use App\Models\Site;
 use Illuminate\Contracts\Support\Responsable;
 use Maatwebsite\Excel\Concerns\Exportable;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exports\ExcelExport\Traits;
+namespace App\Exports\ExcelExport\FromFilteredQuery\Traits;
 
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;

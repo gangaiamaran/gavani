@@ -11,15 +11,14 @@ trait ListPageGetActionsTrait
 {
     public function getActions(): array
     {
-        $actionArray = [];
-
-        $actionArray[] = PagesButtonAction::make('table_add_button')
-            ->label('Add')
-            ->iconPosition('before')
-            ->url(static::getResource()::getUrl('create'))
-            ->icon('heroicon-o-plus-circle')
-            ->hidden(! static::getResource()::canCreate());
-
-        return $actionArray;
+        return [];
+        return [
+            PagesButtonAction::make('list_page_add_button')
+                ->label('Add')
+                ->iconPosition('before')
+                ->url(static::getResource()::getUrl('create'))
+                ->icon('heroicon-o-plus-circle')
+                ->visible(static::getResource()::canCreate()),
+        ];
     }
 }

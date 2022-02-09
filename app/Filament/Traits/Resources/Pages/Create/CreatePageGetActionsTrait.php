@@ -12,7 +12,8 @@ trait CreatePageGetActionsTrait
     public function getActions(): array
     {
         return [
-            PagesButtonAction::make('back')
+            PagesButtonAction::make('create_page_back_button')
+                ->iconPosition('before')
                 ->label('Back')
                 ->url(static::getResource()::getUrl())
                 ->color('danger')

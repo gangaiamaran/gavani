@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exports\ExcelExport\Traits;
+namespace App\Exports\ExcelExport\FromFilteredQuery\Traits;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -27,7 +27,7 @@ trait SetPropertyTrait
             'subject' => class_basename(self::class),
             'keywords' => implode(',', ['Export', $classBaseName]),
             'category' => 'Export',
-            'company' => 'Laravel Chennai Community',
+            'company' => 'Postiefs Technologies',
         ];
     }
 }

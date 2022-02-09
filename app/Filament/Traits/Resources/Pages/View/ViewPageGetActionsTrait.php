@@ -5,22 +5,27 @@ namespace App\Filament\Traits\Resources\Pages\View;
 use Filament\Pages\Actions\ButtonAction as PagesButtonAction;
 
 /**
- * Get the actions for View page on Resource
+ * Get the Page actions for view page on Resource
  */
 trait ViewPageGetActionsTrait
 {
     public function getActions(): array
     {
-        $actionArray = [];
+        return [
 
-        $actionArray[] = PagesButtonAction::make('view_back_button')
-            ->iconPosition('before')
-            ->label('Back')
-            ->url(static::getResource()::getUrl())
-            ->color('danger')
-            ->icon('heroicon-o-arrow-circle-left')
-            ->hidden(! static::getResource()::canViewAny());
+            PagesButtonAction::make('view_page_edit_action')
+                ->label('Edit')
+                ->url(function () {
+                    return static::getResource()::getUrl('edit', ['record' => $this->record, 'fromPage' => 'editRecord']);
+                })
+                ->hidden(! static::getResource()::canEdit($this->record))
+                ->icon('heroicon-o-pencil'),
 
-        return $actionArray;
+            PagesButtonAction::make('view_page_back_action')
+                ->label('Back')
+                ->url(static::getResource()::getUrl())
+                ->color('danger')
+                ->icon('heroicon-o-arrow-circle-left'),
+        ];
     }
 }

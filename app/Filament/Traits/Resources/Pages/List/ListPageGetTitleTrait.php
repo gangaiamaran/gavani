@@ -9,6 +9,6 @@ trait ListPageGetTitleTrait
 {
     protected function getTitle(): string
     {
-        return static::getResource()::getPluralLabel();
+        return false;
     }
 }

@@ -11,11 +11,11 @@ trait ListPageGetTableQueryStringIdentifierTrait
 {
     protected function getTableQueryStringIdentifier(): string
     {
-        return Str::of(static::getResource())
+        return Str::of(static::getResource()::getModel())
             ->basename()
-            ->beforeLast('Resource')
-            ->plural()
-            ->pipe('lcfirst')
+            ->pluralStudly()
+            ->snake()
+            ->pipe('md5')
             ->__toString();
     }
 }

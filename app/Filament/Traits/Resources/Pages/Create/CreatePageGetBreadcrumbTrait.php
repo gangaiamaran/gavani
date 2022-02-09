@@ -9,6 +9,6 @@ trait CreatePageGetBreadcrumbTrait
 {
     public function getBreadcrumb(): string
     {
-        return 'Add New';
+        return 'Add';
     }
 }

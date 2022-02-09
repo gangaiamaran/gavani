@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\SiteResource\Pages;
 
+use App\Filament\Base\Classes\Resources\Pages\BaseListRecords;
 use App\Filament\Resources\SiteResource;
 use App\Filament\Traits\Resources\Pages\List\ListPageGetActionsTrait;
 use App\Filament\Traits\Resources\Pages\List\ListPageGetTableActionsTrait;
@@ -16,16 +17,8 @@ use Filament\Tables\Columns\BooleanColumn;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 
-class ListSites extends ListRecords
+class ListSites extends BaseListRecords
 {
-    use ListPageGetActionsTrait;
-    use ListPageGetTableActionsTrait;
-    use ListPageGetTableHeaderActionsTrait;
-    use ListPageGetTableQueryStringIdentifierTrait;
-    use ListPageGetTableRecordsPerPageSelectOptionsTrait;
-    use ListPageGetTableRecordUrlUsingTrait;
-    use ListPageGetTitleTrait;
-
     public static function getResource(): string
     {
         return SiteResource::class;
@@ -65,11 +58,6 @@ class ListSites extends ListRecords
     }
 
     protected function getTableBulkActions(): array
-    {
-        return [];
-    }
-
-    protected function getTableFilters(): array
     {
         return [];
     }

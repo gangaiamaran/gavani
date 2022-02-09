@@ -11,11 +11,13 @@ trait CreatePageGetFormActionsTrait
 {
     protected function getFormActions(): array
     {
+        //@todo Add loading state to button
         return [
-            PagesButtonAction::make('create')
+            PagesButtonAction::make('create_page_form_save_button')
+                ->iconPosition('before')
                 ->icon('heroicon-o-check')
                 ->label('Save')
-                ->submit(),
+                ->submit('create'),
         ];
     }
 }

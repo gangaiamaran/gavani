@@ -2,7 +2,7 @@
 
 namespace App\Filament\Traits\Resources\Pages\List;
 
-use Filament\Tables\Actions\IconButtonAction as TablesIconButtonAction;
+use Filament\Tables\Actions\ButtonAction as TableButtonAction;
 use Illuminate\Support\Str;
 
 /**
@@ -12,11 +12,10 @@ trait ListPageGetTableHeaderActionsTrait
 {
     public static function excelExportClass()
     {
-        $modelName = Str::of(static::getResource())->basename()->beforeLast('Resource');
-
-        $resourceNamespaceForModel = Str::of(static::getResource())->explode('\\')->reverse()->skip(1)->reverse()->merge($modelName)->implode('\\');
-
-        return Str::of($resourceNamespaceForModel)->remove(['App\Filament\Resources\\'])->prepend('App\Exports\ExcelExport\\')->finish('Export')->__toString();
+        return Str::of(static::getResource()::getModel())
+            ->replace(['App\Models\\'], ['App\Exports\ExcelExport\FromFilteredQuery\\'])
+            ->append('Export')
+            ->__toString();
     }
 
     public function exportToExcel()
@@ -24,13 +23,27 @@ trait ListPageGetTableHeaderActionsTrait
         return app(self::excelExportClass())->setQueryBuilder($this->getFilteredTableQuery());
     }
 
-    protected function getTableHeaderActions(): array
+    public function getTableHeaderActions(): array
     {
         return [
-            TablesIconButtonAction::make('Export')
+            
+
+            TableButtonAction::make('list_page_table_header_export_button')
+                ->label('Export')
+                ->iconPosition('before')
                 ->icon('heroicon-o-arrow-circle-right')
+                ->color('secondary')
                 ->action('exportToExcel')
-                ->hidden(! static::getResource()::canExport()),
+                ->visible(static::getResource()::canExport())
+                ,
+
+            TableButtonAction::make('list_page_table_header_add_button')
+            ->label('Add')
+                ->iconPosition('before')
+                ->icon('heroicon-o-plus-circle')
+                ->color('primary')
+                ->url(static::getResource()::getUrl('create'))
+                ->visible(static::getResource()::canCreate()),
         ];
     }
 }
